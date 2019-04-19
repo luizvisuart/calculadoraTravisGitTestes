@@ -1,33 +1,51 @@
 var Calculadora = {
-    adicionar: function (n1, n2) {
-        if (validarNumeroInformado(n1, n2)) {
-            return 0;
-        }
-        n1 = parseFloat(n1);
-        n2 = parseFloat(n2);
 
-        return n1 + n2;
+    ADICAO: '+',
+    SUBRACAO: '-',
+    DIVISAO: '/',
+    MULTIPLICACAO: '*',
+
+    adicionar: function (n1, n2) {
+        return Calculadora.calcular(n1, n2, Calculadora.ADICAO);
     },
+
     subtrair: function (n1, n2) {
-        if (validarNumeroInformado(n1, n2)) {
-            return 0;
-        }
-        return n1 - n2;
+        return Calculadora.calcular(n1, n2, Calculadora.SUBRACAO);
     },
+
     dividir: function (n1, n2) {
         if (n2 === 0) return 'Erro';
-        if (isNaN(n1) || isNaN(n2)) return 0;
-        return n1 / n2;
+        return Calculadora.calcular(n1, n2, Calculadora.DIVISAO);
     },
+
     multiplicar: function (n1, n2) {
+        return Calculadora.calcular(n1, n2, Calculadora.MULTIPLICACAO);
+    },
+
+    calcular: function (n1, n2, operacao) {
+        var resposta;
+        n1 = parseFloat(n1);
+        n2 = parseFloat(n2);
         if (isNaN(n1) || isNaN(n2)) return 0;
-        return n1 * n2;
+        switch (operacao) {
+            case Calculadora.ADICAO:
+                resposta = n1 + n2;
+                break;
+            case Calculadora.SUBRACAO:
+                resposta = n1 - n2;
+                break;
+            case Calculadora.DIVISAO:
+                resposta = n1 / n2;
+                break;
+            case Calculadora.MULTIPLICACAO:
+                resposta = n1 * n2;
+                break;
+            default:
+                resposta = 0;
+        }
+        return resposta;
     }
 };
-
-function validarNumeroInformado(num1, num2) {
-    return isNaN(num1) || isNaN(num2);
-}
 
 if (typeof module !== undefined && typeof module.exports !== 'undefined') {
     module.exports = Calculadora;
