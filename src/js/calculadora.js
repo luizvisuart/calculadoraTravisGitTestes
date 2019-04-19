@@ -20,7 +20,8 @@ var Calculadora = {
         return n1 / n2;
     },
     multiplicar: function (n1, n2) {
-        return 0;
+        if (isNaN(n1) || isNaN(n2)) return 0;
+        return n1 * n2;
     }
 };
 
