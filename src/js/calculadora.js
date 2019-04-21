@@ -27,6 +27,7 @@ var Calculadora = {
         n1 = parseFloat(n1);
         n2 = parseFloat(n2);
         if (isNaN(n1) || isNaN(n2)) return 0;
+
         switch (operacao) {
             case Calculadora.ADICAO:
                 resposta = n1 + n2;
